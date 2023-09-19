@@ -1,0 +1,29 @@
+{
+  "name": "laboration-2",
+  "version": "1.0.0",
+  "description": "1DV610 Laboration 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CEskilsson/Laboration-2.git"
+  },
+  "author": "Cornelia Eskilsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CEskilsson/Laboration-2/issues"
+  },
+  "homepage": "https://github.com/CEskilsson/Laboration-2#readme",
+  "dependencies": {
+    "lint": "^0.8.19",
+    "node": "^20.6.0"
+  },
+  "devDependencies": {
+    "@lnu/eslint-config": "^1.1.7",
+    "eslint": "^8.49.0"
+  }
+}
