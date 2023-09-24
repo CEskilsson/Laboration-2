@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,30 @@
     <!-- Include your CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div>
         <textarea id="text-input" rows="10" cols="50" placeholder="Enter text here..."></textarea>
         <button id="word-count-button">Count Words</button>
         <button id="period-count-button">Count Periods</button>
         <button id="average-word-length-button">Average Word Lenght </button>
+        <button id="word-frequency-button">Word Frequency</button>
     </div>
 
     <div id="results">
         <p id="word-count">Word Count: <span id="word-count-display">0</span></p>
         <p id="period-count">Period Count: <span id="period-count-display">0</span></p>
         <p id="average-word-lenght">Average Word Lenght: <span id="average-word-lenght-display">0</span></p>
+        <div id="word-frequency-container">
+            <p>Word Frequency:</p>
+            <div id="word-frequency">
+                <!-- Word frequency results will be displayed here -->
+            </div>
+        </div>
+
     </div>
     <!-- Include your JavaScript file -->
     <script src="index.js"></script>
 </body>
+
 </html>

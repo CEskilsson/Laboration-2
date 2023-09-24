@@ -12,6 +12,8 @@ const periodCountButton = document.getElementById('period-count-button')
 const periodCountDisplay = document.getElementById('period-count-display')
 const averageWordLengthButton = document.getElementById('average-word-length-button')
 const averageWordLengthDisplay = document.getElementById('average-word-lenght-display')
+const wordFrequencyButton = document.getElementById('word-frequency-button');
+const wordFrequencyDisplay = document.getElementById('word-frequency')
 
 wordCountButton.addEventListener('click', () => {
   const textInput = document.getElementById('text-input').value
@@ -33,6 +35,21 @@ averageWordLengthButton.addEventListener('click', () => {
   
 })
 
+wordFrequencyButton.addEventListener('click', () => {
+  const textInput = document.getElementById('text-input').value
+  const wordMap = wordFrequency(textInput)
+
+  // Clear previous content
+  wordFrequencyDisplay.innerHTML = ''
+
+  // Display word frequency results
+  for (const word in wordMap) {
+    const wordElement = document.createElement('p')
+    wordElement.textContent = `${word}: ${wordMap[word]}`
+    wordFrequencyDisplay.appendChild(wordElement)
+  }
+})
+
 function countWords(text) {
   const words = text.split(/\s+/).filter(word => word.length > 0)
   return words.length
@@ -47,4 +64,18 @@ function calculateAverageWordLength(text) {
   const totalCharacters = words.reduce((total, word) => total + word.length, 0);
   const averageWordLength = totalCharacters / words.length || 0;
   return averageWordLength.toFixed(2);
+}
+
+function wordFrequency(text) {
+  const words = text.toLowerCase().split(/\s+/).filter(word => word.length > 0)
+  const wordMap = {}
+
+  for (const word of words) {
+    if (word in wordMap) {
+      wordMap[word] += 1
+    } else {
+      wordMap[word] = 1
+    }
+  }
+  return wordMap
 }
