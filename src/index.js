@@ -10,12 +10,17 @@ const wordCountButton = document.getElementById('word-count-button')
 const wordCountDisplay = document.getElementById('word-count-display')
 const periodCountButton = document.getElementById('period-count-button')
 const periodCountDisplay = document.getElementById('period-count-display')
+const maximumWordLengthButton = document.getElementById('maximum-word-length-button')
+const maximumWordLengthDisplay = document.getElementById('maximum-word-lenght-display')
+const minimumWordLengthButton = document.getElementById('minimum-word-length-button')
+const minimumWordLengthDisplay = document.getElementById('minimum-word-lenght-display')
 const averageWordLengthButton = document.getElementById('average-word-length-button')
 const averageWordLengthDisplay = document.getElementById('average-word-lenght-display')
 const wordFrequencyButton = document.getElementById('word-frequency-button')
 const wordFrequencyDisplay = document.getElementById('word-frequency')
 const generateWordCloudButton = document.getElementById('generate-word-cloud-button')
-const generateWordCloudDispaly = document.getElementById('word-cloud-container')
+const generateWordCloudDisplay = document.getElementById('word-cloud-container')
+const generateWordFrequencyDisplay = document.getElementById('word-frequency-container')
 const letterInput = document.getElementById('letter-input')
 const countLetterButton = document.getElementById('count-letter-button')
 const letterCountDisplay = document.getElementById('letter-count-display')
@@ -32,6 +37,18 @@ periodCountButton.addEventListener('click', () => {
   periodCountDisplay.innerHTML = periodCount
 })
 
+minimumWordLengthButton.addEventListener('click', () => {
+  const textInput = document.getElementById('text-input-element').value
+  const minimumLength = calculateMinimumWordLength(textInput)
+  minimumWordLengthDisplay.innerHTML = minimumLength
+})
+
+maximumWordLengthButton.addEventListener('click', () => {
+  const textInput = document.getElementById('text-input-element').value
+  const maximumLength = calculateMaximumWordLength(textInput)
+  maximumWordLengthDisplay.innerHTML = maximumLength
+})
+
 averageWordLengthButton.addEventListener('click', () => {
   const textInput = document.getElementById('text-input-element').value
   const averageLength = calculateAverageWordLength(textInput)
@@ -43,11 +60,13 @@ wordFrequencyButton.addEventListener('click', () => {
   const wordMap = wordFrequency(textInput)
 
   sortWordFrequency(wordMap)
+  generateWordFrequencyDisplay.style.display = 'inline-block'
 })
 
 generateWordCloudButton.addEventListener('click', () => {
   const textInput = document.getElementById('text-input-element').value
-  generateWordCloudDispaly.innerHTML = ''
+  generateWordCloudDisplay.innerHTML = ''
+  generateWordCloudDisplay.style.display = 'inline-block'
   createWordCloud(textInput)
 })
 
@@ -73,6 +92,49 @@ function countWords (text) {
  */
 function countPeriods (text) {
   return (text.match(/\./g) || []).length
+}
+
+/**
+ *
+ * @param text
+ */
+function calculateMaximumWordLength (text) {
+  const words = text.split(/\s+/)
+
+  let longestLength = 0
+
+  for (const word of words) {
+    const cleanedWord = word.replace(/[.,!?;:'"()]/g, '') // Remove any punctuation from the word
+
+    const wordLength = cleanedWord.length
+
+    if (wordLength > longestLength) {
+      longestLength = wordLength
+    }
+  }
+
+  return longestLength
+}
+
+/**
+ *
+ * @param text
+ */
+function calculateMinimumWordLength (text) {
+  const words = text.split(/\s+/)
+
+  let shortestLength = calculateMaximumWordLength(text)
+
+  for (const word of words) {
+    const cleanedWord = word.replace(/[.,!?;:'"()]/g, '') // Remove any punctuation from the word
+    const wordLength = cleanedWord.length
+
+    if (wordLength < shortestLength) {
+      shortestLength = wordLength
+    }
+  }
+
+  return shortestLength
 }
 
 /**
@@ -115,14 +177,21 @@ function sortWordFrequency (wordMap) {
   let row = ''
   let count = 0
 
-  for (const word in wordMap) {
+  const wordArray = Object.keys(wordMap).map((word) => ({
+    word,
+    frequency: wordMap[word]
+  }))
+
+  wordArray.sort((a, b) => b.frequency - a.frequency)
+
+  for (const word of wordArray) {
     if (count >= 5) {
       wordFrequencyDisplay.innerHTML += `<p>${row}</p>`
       row = ''
       count = 0
     }
 
-    row += `${word}: ${wordMap[word]}, `
+    row += `${word.word}: ${word.frequency}, `
     count++
   }
   if (row !== '') {
@@ -140,15 +209,35 @@ function createWordCloud (text) {
   const cloudContainer = document.getElementById('word-cloud-container')
   cloudContainer.innerHTML = '' // Clear previous content
 
+  let maxFrequency = 1
+  const minFrequency = 1
+  const maxFontSize = 100
+  const centerX = cloudContainer.clientWidth / 2
+  const centerY = cloudContainer.clientHeight / 2
+  const maxRadius = Math.min(centerX, centerY) + 10// Adjust as needed
+
+  for (const word in wordMap) {
+    if (wordMap[word] > maxFrequency) {
+      maxFrequency = wordMap[word]
+    }
+  }
+
   for (const word in wordMap) {
     const wordElement = document.createElement('span')
     wordElement.textContent = word
     wordElement.className = `word freq-${wordMap[word]}`
 
-    const left = Math.random() * (cloudContainer.clientWidth - 100)
-    const top = Math.random() * (cloudContainer.clientHeight - 20)
+    const angle = Math.random() * 2 * Math.PI
+
+    const fontSize = 10 + (wordMap[word] - minFrequency) / (maxFrequency - minFrequency) * (maxFontSize - 10)
+    const radius = (maxRadius - (wordMap[word] - minFrequency) / (maxFrequency - minFrequency) * (maxRadius - 10)) * (Math.random() * 0.5 + 0.5)
+
+    const left = centerX + radius * Math.cos(angle)
+    const top = centerY + radius * Math.sin(angle)
+
     wordElement.style.left = `${left}px`
     wordElement.style.top = `${top}px`
+    wordElement.style.fontSize = `${fontSize}px`
 
     cloudContainer.appendChild(wordElement)
   }
