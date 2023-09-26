@@ -4,9 +4,39 @@ body {
   background-color: bisque;
 }
 
-#word-frequency {
+
+
+#display-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+
+#word-frequency-container {
   background-color: cornsilk;
   border: 2px solid black;
-  padding: 10px;
+  margin: 10px;
+  padding: 5px;
   display: inline-block;
+}
+
+#word-cloud-container {
+  width: 400px; 
+  height: 400px; 
+  border: 2px solid #000; 
+  margin: 10px;
+  padding: 5px;
+  position: relative; 
+ 
+}
+
+.word {
+  position: absolute;
+  font-size: 10px; 
+}
+
+.word.freq-2 {
+  font-size: 20px; 
 }
