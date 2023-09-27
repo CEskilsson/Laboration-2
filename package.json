@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.7",
-    "eslint": "^8.49.0"
+    "eslint": "^8.49.0",
+    "jest": "^29.7.0"
   }
 }
