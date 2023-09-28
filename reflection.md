@@ -36,3 +36,11 @@ As I mentioned I agree that our functions should do one thing the paragraph **Ha
 
 This chapter is extreme, but in giving this extremely clean philosophy it helped me see how I sometimes put more things than I should in my functions, and how things can get dragged out with ifs, switches and so on. I don’t know if I will ever be able to 100 follow this book’s rules, but they will definitely help me clean up my code in the future.
 
+**My reflection on the lab:***
+As I have mentioned before I have learned a lot from reading these chapters and I think I did good even before I read them. Naming my variables and methods well is something I try really hard to do because I know that if I don’t I will confuse myself. I really related to the **Use Intention-revealing Names** and **Avoid Disinformation** rules. These should be built into our programmer brains for our own sake and for our future colleagues. Following these two will in my opinion force us to also follow the **Do One Thing** rule and this will lead to smaller functions.
+
+I have some longer functions in my code and I really think it’s hard to make them as minimal as the author of this book wants us to make them. This is where I start to disagree on some points with the author. But, looking at my code from this project I think I did a good job in keeping my functions as small as possible. Of course, there are always ways to break things out and make other functions, erase things, and re-write things. But all in all, I think I did a good job.
+
+The same goes with the naming of my functions and variables. I try to make it stupid proof for myself and try to be as obvious as I can. I truly believe and agree with the author of Clean Code that sometimes we need to make the names longer. Using single letters or numbers is going to be confusing to myself in 5 minutes when I have looked away from my code and have to come back. I can only imagine coming into a project where prefixes and short names or “project-specific-insider-names” are the norm, it would take so long to get into the swing of things, time that could have been put into the project.  
+  
+On an ending note, this was a very good exercise in code quality and even if we think we’re doing a good job as is, there are always ways to improve. Even though I think this author takes it to the extreme sometimes.
