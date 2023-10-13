@@ -30,5 +30,12 @@ Then in the bottom right of your editor, you should have this a Go Live button:
 ![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/17c696e3-4ada-4eb5-a230-6995fdbfe71c)
 While in the index.html file click this button and the test app should start up in your chosen browser.
 
+## How to use the module:
+Take the text-analysis-function.js and place it in your project. 
+You then import it as a class and instantiate it.
+For example like this:
+![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/d30b8fce-f058-445b-8d8a-88c52dbf8cc4)
+![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/55aa714c-40ab-4340-995c-40f1991d6a83)
+
 
 
