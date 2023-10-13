@@ -13,7 +13,7 @@ import {
   calculateAverageWordLength,
   wordFrequency,
   countLetter
-} from '../text-analysis-module.js'
+} from '../text-analysis-functions.js'
 
 describe('countWords', () => {
   describe('return value', () => {
