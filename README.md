@@ -1,11 +1,17 @@
 # Text Analysis Module
 
-## **Description**
-This is the second Lab in the course 1DV610, Software Quality.
-In this lab we were tasked with creating a module that we will use in an app later in the course. 
-We also focused on the code quality guidelines in the book Clean Code by Robert C. Martin and used this in our reflections and work on the module.
-
+## **Vision**
 I have made a text analysis module that will help you analyse your text in different ways. 
+I wanted to create tools that can both help in analysing our texts and also make it more fun to write texts. 
+In this module there are several different tools that can help you analyse your text, you do not need to use all of them of course.
+There is a wide variety of tools since we all want different things.  
+
+## How to use the module:
+Take the text-analysis-function.js and place it in your project. 
+You then import it as a class and instantiate it.
+For example like this:
+![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/d30b8fce-f058-445b-8d8a-88c52dbf8cc4)
+![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/55aa714c-40ab-4340-995c-40f1991d6a83)
 
 ## What does it do?
 This module has a few different tools to help you analyse your text. 
@@ -30,12 +36,7 @@ Then in the bottom right of your editor, you should have this a Go Live button:
 ![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/17c696e3-4ada-4eb5-a230-6995fdbfe71c)
 While in the index.html file click this button and the test app should start up in your chosen browser.
 
-## How to use the module:
-Take the text-analysis-function.js and place it in your project. 
-You then import it as a class and instantiate it.
-For example like this:
-![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/d30b8fce-f058-445b-8d8a-88c52dbf8cc4)
-![image](https://github.com/CEskilsson/Laboration-2/assets/112517081/55aa714c-40ab-4340-995c-40f1991d6a83)
+
 
 
 
