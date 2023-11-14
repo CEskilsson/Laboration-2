@@ -1,54 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Analyzer</title>
-
-    <!-- Include your CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <title>Simple Journal App</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
-    <div>
-        <textarea id="text-input-element" rows="10" cols="50" placeholder="Enter text here..."></textarea>
-        <button id="word-count-button">Count Words</button>
-        <button id="period-count-button">Count Periods</button>
-        <button id="maximum-word-length-button">Maximum Word Length</button>
-        <button id="minimum-word-length-button">Minimum Word Length</button>
-        <button id="average-word-length-button">Average Word Lenght </button>
-        <button id="word-frequency-button">Word Frequency</button>
-        <button id="generate-word-cloud-button">Generate Word Cloud</button>
-    </div>
-    <div id="results">
-        <p id="word-count">Word Count: <span id="word-count-display">0</span></p>
-        <p id="period-count">Period Count: <span id="period-count-display">0</span></p>
-        <p id="maximum-word-lenght">Maximum Word Length: <span id="maximum-word-lenght-display">0</span></p>
-        <p id="minimum-word-lenght">Minimum Word Length: <span id="minimum-word-lenght-display">0</span></p>
-        <p id="average-word-lenght">Average Word Length: <span id="average-word-lenght-display">0</span></p>
+    <header>
+        <h1>My Simple Journal</h1>
+    </header>
+    <main>
+        <!-- Journal Entries -->
+        <section id="journal-entries">
+            <!-- Entries will be dynamically added here -->
+        </section>
 
-        <div>
-            <input type="text" id="letter-input" placeholder="Enter a letter">
-            <button id="count-letter-button">Count Letter</button>
-            <p id="letter-count">Letter Count: <span id="letter-count-display">0</span></p>
-        </div>
+        <!-- Form to add new entry -->
+        <form id="add-entry-form">
+            <textarea id="entry-text" placeholder="Write your entry here"></textarea>
+            <button type="submit">Add Entry</button>
+        </form>
+    </main>
 
-        <div id="display-container">
-            <div id="word-frequency-container">
-
-                <div id="word-frequency">
-                    <!-- Word frequency results will be displayed here -->
-                </div>
-            </div>
-
-            <div id="word-cloud-container">
-                <!-- Word cloud results will be displayed here -->
-            </div>
-        </div>
-    </div>
-    <!-- Include your JavaScript file -->
-    <script src="text-analysis-app.js" type="module"></script>
+    <script src="scripts/text-analysis-module.js"></script>
+    <script src="scripts/journal.js"></script>
 </body>
-
 </html>

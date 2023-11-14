@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import { TextAnalysis } from './text-analysis-functions.js'
+import { TextAnalysis } from './modules/text-analysis-functions.js'
 
 const textAnalyzer = new TextAnalysis()
 
