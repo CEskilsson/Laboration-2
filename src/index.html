@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Simple Journal App</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>My Simple Journal</h1>
     </header>
     <main>
-        <!-- Journal Entries -->
-        <section id="journal-entries">
-            <!-- Entries will be dynamically added here -->
-        </section>
+        <div class="entry-container">
+            <!-- Journal Entries -->
+            <section id="journal-entries" class="entry-list">
+                <!-- Entries will be dynamically added here -->
+            </section>
+        </div>
 
         <!-- Form to add new entry -->
         <form id="add-entry-form">
@@ -23,6 +27,7 @@
     </main>
 
     <script src="scripts/text-analysis-module.js"></script>
-    <script src="scripts/journal.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
