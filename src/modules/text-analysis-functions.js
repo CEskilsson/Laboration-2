@@ -1,5 +1,8 @@
 /**
+ * Text analysis module.
  *
+ * @author Cornelia Eskilsson
+ * @version 1.0.0
  */
 export class TextAnalysis {
   /**
