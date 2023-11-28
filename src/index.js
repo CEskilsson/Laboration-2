@@ -1,4 +1,4 @@
-import { entries, addNewEntry } from './journal/journal-entries.js'
+import { Journal } from './journal/journal-entries.js'
 import { TextAnalysis } from './modules/text-analysis-functions.js'
 
 /**
@@ -11,10 +11,12 @@ import { TextAnalysis } from './modules/text-analysis-functions.js'
 document.addEventListener('DOMContentLoaded', () => {
   const entryForm = document.getElementById('add-entry-form')
   const entryTextArea = document.getElementById('entry-text')
+  const entryTitleArea = document.getElementById('entry-title')
   const journalEntriesSection = document.getElementById('journal-entries')
   const wordCountDisplay = document.getElementById('word-count')
 
   const textAnalyzer = new TextAnalysis()
+  const journal = new Journal()
 
   /**
    * Updates the word count display based on the given text.
@@ -37,8 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const displayEntries = () => {
     journalEntriesSection.innerHTML = '' // Clear previous entries
-    entries.forEach((entry) => {
-      addNewEntry(entry)
+    journal.entries.forEach((entry) => {
+      journal.displayEntry(entry.text, entry.title)
     })
   }
 
@@ -48,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault()
 
     const newEntry = entryTextArea.value.trim()
+    const newTitle = entryTitleArea.value.trim()
     if (newEntry !== '') {
-      entries.push(newEntry)
-      localStorage.setItem('journalEntries', JSON.stringify(entries))
-      addNewEntry(newEntry)
+      journal.addNewEntry(newEntry, newTitle)
       entryTextArea.value = ''
+      entryTitleArea.value = ''
     }
   })
 

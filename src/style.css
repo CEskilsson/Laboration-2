@@ -36,6 +36,16 @@ body {
   resize: vertical;
 }
 
+/* Style the textarea */
+#entry-title {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
 /* Style the Add Entry button */
 #add-entry-form button {
   padding: 8px 16px;
