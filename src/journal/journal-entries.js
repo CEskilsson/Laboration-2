@@ -1,61 +1,72 @@
 /**
- * Contains the journal entries and functions to add new entries.
  *
- * @author Cornelia Eskilsson
- * @version 1.0.0
- */
-
-/**
- * Represents a journal containing entries and methods to manage them.
- *
- * @class
  */
 export class Journal {
   /**
-   * Initializes a new Journal instance.
+   *
    */
   constructor () {
     this.entries = JSON.parse(localStorage.getItem('journalEntries')) || []
   }
 
   /**
-   * Adds a new entry to the journal.
    *
-   * @param {string} newEntryText The text of the new entry.
-   * @param {string} title The title of the entry.
+   * @param newEntryText
+   * @param title
    */
   addNewEntry (newEntryText, title) {
-    this.displayEntry(newEntryText, title)
-    // Add the new entry to the entries array
-    this.entries.push({ title, text: newEntryText })
+    const timestamp = this.addNewTimestamp()
+
+    const currentEntry = { title, text: newEntryText, timestamp }
+    
+    this.displayEntry(currentEntry)
+    // Add the new entry to the entries array with a timestamp
+    
+    this.entries.push(currentEntry)
 
     // Update local storage with the updated entries
     localStorage.setItem('journalEntries', JSON.stringify(this.entries))
   }
 
   /**
-   * Displays an entry on the journal.
    *
-   * @param {string} newEntryText The text of the new entry.
-   * @param {string} title The title of the entry.
+   * @param newEntryText
+   * @param title
    */
-  displayEntry (newEntryText, title) {
+  displayEntry (entry) {
     const newEntryElement = document.createElement('div')
     newEntryElement.classList.add('entry-item')
-    newEntryElement.innerHTML = this.addTitle(title)
-    newEntryElement.innerHTML += newEntryText.replace(/\n/g, '<br>')
+
+    const titledEntry = this.addTitle(entry.title) // Get the title
+    const timestamp = this.addTimestamp(entry.timestamp) // Get the timestamp
+
+    newEntryElement.innerHTML = `${timestamp}<br>${titledEntry}<br>${entry.text.replace(/\n/g, '<br>')}`
 
     const entryList = document.getElementById('journal-entries')
     entryList.appendChild(newEntryElement)
   }
 
   /**
-   * Adds a title to an entry.
    *
-   * @param {string} title The title of the entry.
-   * @returns {string} The formatted entry with the title.
+   * @param title
    */
   addTitle (title) {
     return `<h2>${title}</h2>`
+  }
+
+  /**
+   *
+   */
+  addNewTimestamp () {
+    const timeOptions = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' } // Options for time formatting
+    const timestamp = new Date().toLocaleTimeString(undefined, timeOptions) // Get only the time part
+    return `<div class="timestamp">${timestamp}</div>`
+  }
+
+  /**
+   *
+   */
+  addTimestamp (timestamp) {
+    return `<div class="timestamp">${timestamp}</div>`
   }
 }

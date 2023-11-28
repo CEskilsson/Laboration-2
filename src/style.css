@@ -60,3 +60,9 @@ body {
 #add-entry-form button:hover {
   background-color: #45a049;
 }
+
+.timestamp {
+  font-size: 0.8em;
+  color: #888;
+  /* Other styles */
+}

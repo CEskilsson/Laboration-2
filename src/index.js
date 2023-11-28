@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayEntries = () => {
     journalEntriesSection.innerHTML = '' // Clear previous entries
     journal.entries.forEach((entry) => {
-      journal.displayEntry(entry.text, entry.title)
+      journal.displayEntry(entry)
     })
   }
 
