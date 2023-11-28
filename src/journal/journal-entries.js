@@ -51,7 +51,7 @@ export class Journal {
    * @param title
    */
   addTitle (title) {
-    return `<h2>${title}</h2>`
+    return `<h3 class="created-entry-title">${title}</h3>`
   }
 
   /**

@@ -46,6 +46,14 @@ body {
   resize: vertical;
 }
 
+/* Style the dynamically created title with the assigned class */
+.created-entry-title {
+  display: inline-block;
+  border: 1px solid black; 
+  padding: 10px 5px; 
+  margin-top: 0;
+}
+
 /* Style the Add Entry button */
 #add-entry-form button {
   padding: 8px 16px;
