@@ -1,49 +1,61 @@
 @charset "utf-8";
 
 body {
-  background-color: bisque;
+  font-family: 'Abel', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F8F8FF;
 }
 
 .entry-container {
   padding: 20px;
-  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  background: linear-gradient(to bottom, #4086a8, #f9f9f9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .entry-list {
   margin-top: 20px;
 }
 
+
+
 /* Define styles for each journal entry */
 .entry-item {
-  margin-bottom: 10px; /* Add some spacing between entries */
+  margin-bottom: 10px; 
   padding: 10px;
-  border: 1px solid #ccc; /* Add a border around each entry */
+  border: 1px solid #ccc; 
   border-radius: 5px;
-  background-color: #f9f9f9; /* Add a background color for better visibility */
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 /* Style the textarea */
 #entry-text {
-  width: 100%;
+  width: 80%;
+  height: 200px;
   padding: 8px;
   margin-bottom: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   resize: vertical;
+  margin: 10px;
 }
 
 /* Style the textarea */
 #entry-title {
-  width: 100%;
+  width: 50%;
+  height: 20px;
   padding: 8px;
   margin-bottom: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   resize: vertical;
+  margin: 10px;
 }
 
 /* Style the dynamically created title with the assigned class */
@@ -52,6 +64,8 @@ body {
   border: 1px solid black; 
   padding: 10px 5px; 
   margin-top: 0;
+  border-color: #333;
+  padding: 8px;
 }
 
 /* Style the Add Entry button */
@@ -62,6 +76,9 @@ body {
   background-color: #4CAF50;
   color: white;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #45a14548;
+  margin: 5px;
 }
 
 /* Change button color on hover */
@@ -73,4 +90,50 @@ body {
   font-size: 0.8em;
   color: #888;
   /* Other styles */
+}
+
+.stats-button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3498db;
+}
+
+.stats-button:hover {
+  background-color: #2980b9;
+}
+
+.delete-button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3498db;
+}
+
+.delete-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e74c3c; /* Red color similar to delete actions */
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #c0392b; /* A darker red border */
+  margin-left: 10px;
+}
+
+.delete-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
 }
