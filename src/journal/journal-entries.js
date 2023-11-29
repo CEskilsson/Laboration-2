@@ -16,6 +16,7 @@ export class Journal {
    *
    * @param {string} newEntryText - The text of the new entry.
    * @param {string} title - The title of the new entry.
+   * @returns {object} - The new entry for test purposes.
    */
   addNewEntry (newEntryText, title) {
     const timestamp = this.addNewTimestamp()
@@ -25,6 +26,7 @@ export class Journal {
     this.displayEntry(currentEntry)
 
     localStorage.setItem('journalEntries', JSON.stringify(this.entries))
+    return currentEntry
   }
 
   /**
@@ -36,36 +38,26 @@ export class Journal {
     const newEntryElement = document.createElement('div')
     newEntryElement.classList.add('entry-item')
 
-    const titledEntry = this.addTitle(entry.title)
-    const timestamp = this.addTimestamp(entry.timestamp)
+    const titledEntry = this.displayTitle(entry.title)
+    const timestamp = this.displayTimestamp(entry.timestamp)
 
     newEntryElement.innerHTML = `${timestamp}<br>${titledEntry}<br>${entry.text.replace(/\n/g, '<br>')}`
 
-    const statsButton = document.createElement('button')
-    statsButton.textContent = 'Stats'
-    statsButton.classList.add('stats-button')
-    statsButton.addEventListener('click', () => this.showStats(entry.text))
+    this.displayStatsButton(newEntryElement, entry)
 
-    newEntryElement.appendChild(statsButton)
-
-    const deleteButton = document.createElement('button')
-    deleteButton.textContent = 'Delete'
-    deleteButton.classList.add('delete-button')
-    deleteButton.addEventListener('click', () => this.deleteEntry(entry))
-
-    newEntryElement.appendChild(deleteButton)
+    this.displayDeleteButton(newEntryElement, entry)
 
     const entryList = document.getElementById('journal-entries')
     entryList.appendChild(newEntryElement)
   }
 
   /**
-   * Adds a title to the entry.
+   * Add a title to the entry display.
    *
    * @param {string} title - The title to be added.
    * @returns {string} - HTML-formatted title.
    */
-  addTitle (title) {
+  displayTitle (title) {
     return `<h3 class="created-entry-title">${title}</h3>`
   }
 
@@ -77,17 +69,45 @@ export class Journal {
   addNewTimestamp () {
     const timeOptions = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }
     const timestamp = new Date().toLocaleTimeString(undefined, timeOptions)
-    return `<div class="timestamp">${timestamp}</div>`
+    return timestamp
   }
 
   /**
-   * Adds a timestamp to the entry.
+   * Adds a timestamp to the entry display.
    *
    * @param {string} timestamp - The timestamp to be added.
    * @returns {string} - HTML-formatted timestamp.
    */
-  addTimestamp (timestamp) {
+  displayTimestamp (timestamp) {
     return `<div class="timestamp">${timestamp}</div>`
+  }
+
+  /**
+   * Adds a stats button to the display of the entry to the journal.
+   *
+   * @param {HTMLElement} newEntryElement - The entry HTML Element to add the button to.
+   * @param {object} entry - The entry.
+   */
+  displayStatsButton (newEntryElement, entry) {
+    const statsButton = document.createElement('button')
+    statsButton.textContent = 'Stats'
+    statsButton.classList.add('stats-button')
+    statsButton.addEventListener('click', () => this.showStats(entry.text))
+    newEntryElement.appendChild(statsButton)
+  }
+
+  /**
+   * Adds a delete button to the display of the entry to the journal.
+   *
+   * @param {HTMLElement} newEntryElement - The entry HTML Element to add the button to.
+   * @param {object} entry - The entry.
+   */
+  displayDeleteButton (newEntryElement, entry) {
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'Delete'
+    deleteButton.classList.add('delete-button')
+    deleteButton.addEventListener('click', () => this.deleteEntry(entry))
+    newEntryElement.appendChild(deleteButton)
   }
 
   /**
@@ -107,6 +127,7 @@ export class Journal {
    * Deletes an entry from the journal.
    *
    * @param {object} entry - The entry to be deleted.
+   * @returns {object[]} - The entry list for test purposes.
    */
   deleteEntry (entry) {
     const entryIndex = this.entries.indexOf(entry)
@@ -118,6 +139,8 @@ export class Journal {
 
       localStorage.setItem('journalEntries', JSON.stringify(this.entries))
     }
+
+    return this.entries
   }
 
   /**
