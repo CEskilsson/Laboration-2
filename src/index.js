@@ -23,11 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const newEntry = entryTextArea.value.trim()
     const newTitle = entryTitleArea.value.trim()
-    if (newEntry !== '') {
-      journal.addNewEntry(newEntry, newTitle)
-      entryTextArea.value = ''
-      entryTitleArea.value = ''
-    }
+    journal.addNewEntry(newEntry, newTitle)
+    entryTextArea.value = ''
+    entryTitleArea.value = ''
   })
 
   /**

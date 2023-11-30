@@ -19,14 +19,21 @@ export class Journal {
    * @returns {object} - The new entry for test purposes.
    */
   addNewEntry (newEntryText, title) {
-    const timestamp = this.addNewTimestamp()
-    const currentEntry = { title, text: newEntryText, timestamp }
+    try {
+      this.clearErrorMessage()
+      const timestamp = this.addNewTimestamp()
+      const currentEntry = { title, text: newEntryText, timestamp }
+      this.validateEntry(currentEntry)
 
-    this.entries.push(currentEntry)
-    this.displayEntry(currentEntry)
+      this.entries.push(currentEntry)
+      this.displayEntry(currentEntry)
 
-    localStorage.setItem('journalEntries', JSON.stringify(this.entries))
-    return currentEntry
+      localStorage.setItem('journalEntries', JSON.stringify(this.entries))
+      return currentEntry
+    } catch (error) {
+      this.handleDisplayEntryError(error)
+      throw error // Rethrow other errors for further handling
+    }
   }
 
   /**
@@ -35,6 +42,7 @@ export class Journal {
    * @param {object} entry - The entry to be displayed.
    */
   displayEntry (entry) {
+    this.clearErrorMessage()
     const newEntryElement = document.createElement('div')
     newEntryElement.classList.add('entry-item')
 
@@ -44,11 +52,42 @@ export class Journal {
     newEntryElement.innerHTML = `${timestamp}<br>${titledEntry}<br>${entry.text.replace(/\n/g, '<br>')}`
 
     this.displayStatsButton(newEntryElement, entry)
-
     this.displayDeleteButton(newEntryElement, entry)
 
     const entryList = document.getElementById('journal-entries')
     entryList.appendChild(newEntryElement)
+  }
+
+  /**
+   * Handles errors that occur while displaying an entry.
+   *
+   * @param {Error} error - The error encountered.
+   * @throws {Error} - Rethrows the error after handling it.
+   */
+  handleDisplayEntryError (error) {
+    console.error('Error in addEntry:', error.message)
+    const errorMessageElement = document.getElementById('error-message')
+    errorMessageElement.innerText = 'Failed to add the entry. Please ensure both title and text are provided.'
+  }
+
+  /**
+   * Clears the error message displayed in the UI.
+   */
+  clearErrorMessage () {
+    const errorMessageElement = document.getElementById('error-message')
+    errorMessageElement.innerHTML = ''
+  }
+
+  /**
+   * Validates the entry before adding it to the journal.
+   *
+   * @param {object} entry - The entry to be validated.
+   * @throws {Error} - Throws an error if the entry is invalid.
+   */
+  validateEntry (entry) {
+    if (!entry || !entry.timestamp || !entry.title || !entry.text) {
+      throw new Error('Title and text are required.')
+    }
   }
 
   /**
