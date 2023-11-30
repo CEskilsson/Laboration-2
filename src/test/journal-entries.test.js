@@ -62,36 +62,3 @@ describe('deleteEntry', () => {
     })
   })
 })
-
-// describe('Journal Class', () => {
-//   let myJournal
-
-//   beforeEach(() => {
-//     myJournal = new Journal()
-//   })
-
-//   test('Add New Entry', () => {
-//     const entryText = 'This is a test entry.'
-//     const title = 'Test Title'
-//     myJournal.addNewEntry(entryText, title)
-
-//     // Perform assertions to check if the entry was added successfully
-//     expect(myJournal.entries.length).toBe(1)
-//     expect(myJournal.entries[0].title).toBe(title)
-//     expect(myJournal.entries[0].text).toBe(entryText)
-//     // Add more assertions as needed
-//   })
-
-//   test('Delete Entry', () => {
-//     // Assuming an entry already exists in the journal
-//     const initialEntryCount = myJournal.entries.length
-//     const entryToDelete = myJournal.entries[0]
-//     myJournal.deleteEntry(entryToDelete)
-
-//     // Perform assertions to check if the entry was deleted successfully
-//     expect(myJournal.entries.length).toBe(initialEntryCount - 1)
-//     // Add more assertions as needed
-//   })
-
-//   // Add more test cases for other methods/functions in the Journal class
-// })

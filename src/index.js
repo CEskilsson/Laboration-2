@@ -40,6 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
     wordCountDisplay.textContent = `Word count: ${wordCount}`
   }
 
-  // Event listener for textarea input
   entryTextArea.addEventListener('input', displayWordCount)
 })

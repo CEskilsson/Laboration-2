@@ -138,7 +138,7 @@ export class TextAnalysis {
     const maxFontSize = 100
     const centerX = cloudContainer.clientWidth / 2
     const centerY = cloudContainer.clientHeight / 2
-    const maxRadius = Math.min(centerX, centerY) + 10// Adjust as needed
+    const maxRadius = Math.min(centerX, centerY) + 10
 
     for (const word in wordMap) {
       if (wordMap[word] > maxFrequency) {
