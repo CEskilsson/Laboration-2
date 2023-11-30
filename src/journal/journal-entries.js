@@ -20,7 +20,6 @@ export class Journal {
    */
   addNewEntry (newEntryText, title) {
     try {
-      this.clearErrorMessage()
       const timestamp = this.addNewTimestamp()
       const currentEntry = { title, text: newEntryText, timestamp }
       this.validateEntry(currentEntry)
@@ -52,6 +51,7 @@ export class Journal {
     newEntryElement.innerHTML = `${timestamp}<br>${titledEntry}<br>${entry.text.replace(/\n/g, '<br>')}`
 
     this.displayStatsButton(newEntryElement, entry)
+    this.displayEditButton(newEntryElement, entry)
     this.displayDeleteButton(newEntryElement, entry)
 
     const entryList = document.getElementById('journal-entries')
@@ -150,6 +150,20 @@ export class Journal {
   }
 
   /**
+   * Adds an edit button to the display of the entry to the journal.
+   *
+   * @param {HTMLElement} newEntryElement - The entry HTML Element to add the button to.
+   * @param {object} entry - The entry.
+   */
+  displayEditButton (newEntryElement, entry) {
+    const editButton = document.createElement('button')
+    editButton.textContent = 'Edit'
+    editButton.classList.add('edit-button')
+    editButton.addEventListener('click', () => this.displayEntryEdit(entry))
+    newEntryElement.appendChild(editButton)
+  }
+
+  /**
    * Displays statistics for an entry.
    *
    * @param {string} entryText - The text of the entry.
@@ -180,6 +194,82 @@ export class Journal {
     }
 
     return this.entries
+  }
+
+  /**
+   * Edits an entry from the journal.
+   *
+   * @param {object} entry - The entry to edit.
+   * @param {string} text - The new text of the edited entry.
+   * @param {string} title - The new title of the edited entry.
+   * @returns {object} - The entry for test purposes.
+   */
+  editEntry (entry, text, title) {
+    const oldText = entry.text
+    const oldTitle = entry.title
+    try {
+      entry.text = text
+      entry.title = title
+
+      this.validateEntry(entry)
+
+      this.renderEntries()
+
+      localStorage.setItem('journalEntries', JSON.stringify(this.entries))
+
+      return entry
+    } catch (error) {
+      entry.text = oldText
+      entry.title = oldTitle
+      this.handleDisplayEntryError(error)
+      throw error
+    }
+  }
+
+  /**
+   * Handles the update entry button click.
+   *
+   * @param {object} entry - The entry to edit.
+   */
+  updateEntryEvent (entry) {
+    const entryForm = document.getElementById('add-entry-form')
+    const entryTextArea = document.getElementById('entry-text')
+    const entryTitleArea = document.getElementById('entry-title')
+    this.editEntry(entry, entryTextArea.value.trim(), entryTitleArea.value.trim())
+    entryForm.removeChild(entryForm.lastChild)
+    entryTextArea.value = ''
+    entryTitleArea.value = ''
+  }
+
+  /**
+   * Displays the UI for editing the entry from the journal.
+   *
+   * @param {object} entry - The entry to edit.
+   */
+  displayEntryEdit (entry) {
+    const entryForm = document.getElementById('add-entry-form')
+    const entryTextArea = document.getElementById('entry-text')
+    const entryTitleArea = document.getElementById('entry-title')
+    if (entryForm.lastChild.textContent === 'Update Entry') {
+      entryForm.removeChild(entryForm.lastChild)
+    }
+    this.displayUpdateEntryButton(entryForm, entry)
+    entryTextArea.value = entry.text
+    entryTitleArea.value = entry.title
+  }
+
+  /**
+   * Adds the update entry button to the display of the entry to the journal.
+   *
+   * @param {HTMLElement} parentElement - The entry HTML Element to add the button to.
+   * @param {object} entry - The entry.
+   */
+  displayUpdateEntryButton (parentElement, entry) {
+    const modifyButton = document.createElement('button')
+    modifyButton.textContent = 'Update Entry'
+    modifyButton.classList.add('uodate-button')
+    modifyButton.addEventListener('click', () => this.updateEntryEvent(entry))
+    parentElement.appendChild(modifyButton)
   }
 
   /**

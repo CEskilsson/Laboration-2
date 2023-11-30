@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   entryForm.addEventListener('submit', (event) => {
     event.preventDefault()
-
     const newEntry = entryTextArea.value.trim()
     const newTitle = entryTitleArea.value.trim()
     journal.addNewEntry(newEntry, newTitle)

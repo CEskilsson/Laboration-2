@@ -54,6 +54,15 @@ describe('displayTimestamp', () => {
   })
 })
 
+describe('editEntry', () => {
+  describe('return value', () => {
+    it('passing the previously added entry, \'Edited test title\' and \'This is an edited test entry.\' should return { text: \'This is an edited test entry.\',  timestamp: timestamp of the entry, title: \'Edited test title\' }', () => {
+      const currentEntry = journal.entries[0]
+      expect(journal.editEntry(currentEntry, 'This is an edited test entry.', 'Edited test title')).toEqual({ text: 'This is an edited test entry.', title: 'Edited test title', timestamp: currentEntry.timestamp })
+    })
+  })
+})
+
 describe('deleteEntry', () => {
   describe('return value', () => {
     it('passing the previously added entry should return an empty array', () => {
