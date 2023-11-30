@@ -1,9 +1,9 @@
 
-***Test Report***
+## ***Test Report***
 
 **Summary**
 - ***Tested Module:*** My Journal
-- ***Test Methodology:*** For the majority of the functions in the module automatic tests were made. But for the createWordCloud function, displayEntry, showStats and renderEntries, manual tests was instead made. This is because of the nature of the functions and it is very difficult to make an automatic test for it. This manual test will not be in the same table as the automatic test but in its own report in this document. There will aslo be a manual test for the sortWordFrequency function this is because it directly influences the front-end. If I wanted to have a automatic test I would have to re write the function. I have insted choosen to do a manual test. 
+- ***Test Methodology:*** For the majority of the functions in the module automatic tests were made. But for the createWordCloud function, displayEntry, showStats and renderEntries, manual tests were instead made. This is because of the nature of the functions and it is very difficult to make an automatic test for it. This manual test will not be in the same table as the automatic test but in its own report in this document. There will also be a manual test for the sortWordFrequency function this is because it directly influences the front end. If I wanted to have an automatic test I would have to rewrite the function. I have instead chosen to do a manual test. 
 - ***Date of Testing:*** 2023-11-30
 - ***Tester:*** Cornelia Eskilsson
 
