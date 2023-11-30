@@ -15,12 +15,16 @@ When it comes to comments it's easy to put too many of them, unnecessary or we f
 This chapter mentions "The Newspaper Metaphor" and to me this is why I want to have proper documentation throughout my code. Here is an example of a method in my code: ![The Newspaper Metaphor](img/NewspaperMethaphor.png) and I think this follows the "The Newspaper Metaphor" in the way that you start at the top, you get inormation about the "article" and then you have the actualt "article" meaning the actual method.Two points that the book mentions is "Vertical Distance" and "Vertical Density" and where we want to keep functions/methods that belong together close to eachother. Lines opf code that are important to eachother shold be close together (density) and concepts that are closely related should also be close together (distance). When I made my tests I tried to keep all my "add" tests close together and the same for the "dispaly" tests (LINK TO THIS).
 
 **Chapter 6 - Objects and Data Structures**
+For this assignment we were told to use a object-oriented approach. To do this I have my two classes, the Journal class and the TextAnalysis class. My Journal class acts as an object that manages the journal entries in the journal application. 
+I was looking through my code to see if I could find any unintentional "Train Wrecks" and I was happy to see that I hadn't managed to make any. 
 
 
 **Chapter 7 - Error Handeling**
+So in chapter 3 we learn that error handeling functions should do only that and nothing else. I did try to do this with this example: ![handelDisplayEntryError](img/handleDisplayEntryError.png) but I also have some try-catch in functions that does other things. A thing that we learn in this chapter is that we "Don't Retuns Null" and "Don't Pass Null", null is bad in this case and I have followed this rule. The chapert also mentions separating concernes and I did try to do that. As I was adding error handling I realised my metthods grew a lot. Therefore I tried to break some of it out.
 
 
 **Chapter 8 - Boundaries**
+In my application I pretty much have only simple code I made. I do use localStorage to store the entries a user creates in the application. For this assignment we were supposed to create all the code on our own and that's why it's all very simple and I'm not using any fancy APIs or anything. At the end of this chapter the author mentions that is't always better to denpend on something we can control rather than something we don't really have control over. And this is a very important thing to take away from this chaper. Of course this is porbably much easier in a smaller project or a personal project where we're the boss. 
 
 
 **Chapter 9 - Unit Tests**

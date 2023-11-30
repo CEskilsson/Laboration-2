@@ -14,14 +14,15 @@
 | Test 2 | Test addNewTimestamp |Passed
 | Test 3 | Test displayTitle | Passed
 | Test 4 | Test displayTimestamp | Passed
-| Test 5 | Test deleteEntry  | Passed
-| Test 6  |Test countWords function  | Passed | 
-| Test 7 | Test countPeriods function | Passed | 
-| Test 8 | Test calculateMaximumWordLength function | Passed |
-| Test 9 | Test calculateMinimumWordLength function |Passed 
-| Test 10 | Test calculateAverageWordLength function | Passed |
-|  Test 11| Test wordFrequency function |Passed |
-| Test 12 | Test countLetter function| Passed|
+| Test 5 | Test editEntry | Passed
+| Test 6 | Test deleteEntry  | Passed
+| Test 7  |Test countWords function  | Passed | 
+| Test 8 | Test countPeriods function | Passed | 
+| Test 9 | Test calculateMaximumWordLength function | Passed |
+| Test 10 | Test calculateMinimumWordLength function |Passed 
+| Test 11 | Test calculateAverageWordLength function | Passed |
+|  Test 12| Test wordFrequency function |Passed |
+| Test 13 | Test countLetter function| Passed|
 
 
 
@@ -49,7 +50,7 @@
 1.  There is no text entered in the input field and click the “Generate Word Cloud” button.
     
 
-**Test Case:**
+### Test Case:
 
 **TC1.1 Successfully creates a word cloud**
 
@@ -117,7 +118,7 @@
 1.  There is no text block entered in the input field.
    
 
-**Test Case:**
+### Test Case:
 
 **TC1.1 Successfully display the sorted word frequency**
 
@@ -177,6 +178,8 @@
 **Alternative Scenarios:**
 
 1.  The entry list is empty.
+
+### Test Case:
 
 -   **TC 1.1: Valid Entry Display**
     
@@ -251,6 +254,8 @@
 
 2. The stats do not show when the button is clicked.
 
+### Test Case:
+
 -   **TC: Valid Entry Text Statistics**
     -   **Test Description:** Check if the word count and period count are displayed correctly for a given entry text.
     
@@ -268,7 +273,7 @@
 ### Method: `renderEntries()`
 **UC1: Display the stats for an entry**
 
-**Preconditions:** Populate the `this.entries` array with a set of valid entries.
+**Preconditions:** The user has previously added entries.
 
 **Postcondition:** The user will be displayed the previously created entries when entering the application.
 
@@ -288,6 +293,7 @@
 
 3. The application only shows the input fields and an empty list even though there should be entries.
 
+### Test Case:
 
 -   **TC: Rendering Existing Entries**
     -   **Test Description:** Ensure that existing entries are correctly rendered onto the UI.
@@ -298,5 +304,129 @@
         1.  Call the `renderEntries` method.
         
     -   **Expected Result:** The UI should display all entries stored in the `this.entries` array without any errors or missing information.
+    - 
+### Method: `updateEntryEvent (entry)`
 
+ **UC1: Update an edited entry**
 
+**Precondition:** The user has previously added entries and edited one of them
+
+**Postcondition:** The user will have a update entry dispalyed in the list of entries.
+
+**Main Scenario:**
+
+1.  The user chooses an entry to edit.
+    
+2.  The user clicks the “Edit” button.
+    
+3. In the input fields for the title and text the user can then endit the entry.
+
+4. The user clicks "Update Entry" to have the original entry updated to the edited one.
+    
+**Alternative Scenarios:**
+
+1.  The user exclude title or text in the update entry and will not be able to update the entry.
+    
+
+### Test Case:
+
+**TC1.1 Successfully update an entry**
+
+ -   **Test Description:** A user click the "Update Entry" button to update the original entry to the edited one.
+
+    - **Scenario:** The user wants to change the title or the text in their entry and therefor clicks the "Edit" button. They then make their edit and clicks the "Update Entry" button to make update.
+
+    -  **Test Steps:**
+
+1.  Choose an entry to edit.
+    
+2.  Click the “Edit” button.
+    
+3.  Edit the title, text, or both.
+    
+4.  Click the "Update Entry" button.
+    
+**Expected Results:** The update entry should be displayed in the list of entries.
+
+  
+**TC1.2: Unsuccessful to update an entry**
+
+ -   **Test Description:** A user tries to update an entry but doesn't include a title or text.
+
+    - **Scenario:** The title or text has been left out when the user tries to update the original entry with the edited one..
+
+    -  **Test Steps:**
+
+1.  Choose an entry to edit.
+    
+2. Click the “Edit” button.
+
+3. Edit the title or text but leave one of the fiels empty.
+
+5. Click the "Update Entry" button.
+     
+**Expected Results:** The user will be unable to update the edited entry and there will be an alert showing the user what they need to do. 
+
+### Method: `displayEntryEdit (entry)`
+
+ **UC1: Display an update of an edited entry**
+
+**Precondition:** The user has edited one of the entries and has also updated it.
+
+**Postcondition:** The user will have a update entry dispalyed in the list of entries.
+
+**Main Scenario:**
+
+1.  The user chooses an entry to edit.
+    
+2.  The user clicks the “Edit” button.
+    
+3. In the input fields for the title and text the user can then endit the entry.
+
+4. The user clicks "Update Entry" to have the original entry updated to the edited one.
+
+6. The updated, edited, entry will now be displayed in the list of entries.
+    
+**Alternative Scenarios:**
+
+1.  The user exclude title or text in the update entry and will not be able to update the entry and it will therefore not be displayed in the list of entries.
+    
+
+### Test Case:
+
+**TC1.1 Successfully display the update of an edited entry**
+
+ -   **Test Description:** A user click the "Update Entry" button to update and display the original entry to the edited one.
+
+    - **Scenario:** The user wants to change the title or the text in their entry and therefor clicks the "Edit" button. They then make their edit and clicks the "Update Entry" button to make update.
+
+    -  **Test Steps:**
+
+1.  Choose an entry to edit.
+    
+2.  Click the “Edit” button.
+    
+3.  Edit the title, text, or both.
+    
+4.  Click the "Update Entry" button.
+    
+**Expected Results:** The edited entry should be updated and displayed in the list of entries.
+
+  
+**TC1.2: Unsuccessful to display the update of an edited entryy**
+
+ -   **Test Description:** A user tries to update an entry but doesn't include a title or text.
+
+    - **Scenario:** The title or text has been left out when the user tries to update the original entry with the edited one..
+
+    -  **Test Steps:**
+
+1.  Choose an entry to edit.
+    
+2. Click the “Edit” button.
+
+3. Edit the title or text but leave one of the fiels empty.
+
+5. Click the "Update Entry" button.
+     
+**Expected Results:** The user will be unable to display the update of the edited entry and there will be an alert showing the user what they need to do. 
